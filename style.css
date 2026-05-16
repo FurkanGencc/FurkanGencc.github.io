@@ -347,11 +347,12 @@ body {
 
   transform: translate(-50%, -50%);
 
+  
   filter: blur(90px) saturate(160%);
 
   opacity: 0.3;
 
-  
+ 
   will-change: transform;
 }
 
@@ -388,7 +389,7 @@ body {
 
   gap: 12px;
 }
-/*  CURSOR CONTAINER */
+/*CURSOR CONTAINER */
 .cursor-ring {
   position: fixed;
   top: 0;
@@ -412,7 +413,7 @@ body {
   transition: opacity 0.2s ease;
 }
 
-/*  DOT */
+/* DOT */
 .cursor-dot {
   width: 6px;
   height: 6px;
@@ -423,14 +424,6 @@ body {
 
 .cursor-hide {
   opacity: 0;
-}
-@media (max-width: 768px) {
-  .cursor-ring,
-  .cursor-light {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
 }
 .footer {
   background: #020617;
