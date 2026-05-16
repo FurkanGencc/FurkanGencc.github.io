@@ -199,10 +199,12 @@ function draw() {
 
 draw();
 
-/* ---------------- CURSOR (SADECE DESKTOP) ---------------- */
+const isMobile = window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window;
+
 if (!isMobile) {
 
   const cursor = document.querySelector(".cursor-ring");
+  const light = document.querySelector(".cursor-light");
 
   let mouseX = 0;
   let mouseY = 0;
@@ -225,22 +227,7 @@ if (!isMobile) {
   }
 
   animate();
-
-  const targets = document.querySelectorAll(
-    "a, button, .project-card, .about-card, .card, .navbar, footer"
-  );
-
-  targets.forEach(el => {
-    el.addEventListener("mouseover", () => {
-      cursor.style.opacity = "0";
-    });
-
-    el.addEventListener("mouseout", () => {
-      cursor.style.opacity = "1";
-    });
-  });
 }
-
 </script>
 
 <footer class="footer">
