@@ -8,7 +8,9 @@
 </head>
 
 <body>
+
 <div class="cursor-light"></div>
+
 <nav class="navbar">
   <div class="logo"></div>
 
@@ -39,7 +41,7 @@
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
         <a href="#">Demo</a>
       </div>
     </div>
@@ -61,18 +63,15 @@
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
         <a href="#">Demo</a>
       </div>
     </div>
 
     <div class="project-media">
-      
       <img src="images/hand.png" alt="Hand Tracking">
-      
     </div>
   </div>
-
 
   <!-- CARD 3 -->
   <div class="project-card">
@@ -86,64 +85,70 @@
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
         <a href="#">Demo</a>
       </div>
     </div>
 
     <div class="project-media">
-      
       <img src="images/pose.png" alt="Pose Est">
-      
     </div>
   </div>
 
 </section>
+
 <div class="cursor-ring">
   <div class="cursor-dot"></div>
 </div>
+
 </body>
+
 <script>
-const cursor = document.querySelector(".cursor-ring");
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-let mouseX = 0;
-let mouseY = 0;
+if (!isMobile) {
 
-let x = 0;
-let y = 0;
+  const cursor = document.querySelector(".cursor-ring");
 
-/* mouse takip */
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+  let mouseX = 0;
+  let mouseY = 0;
 
-function animate() {
-  x += (mouseX - x) * 0.18;
-  y += (mouseY - y) * 0.18;
+  let x = 0;
+  let y = 0;
 
-  cursor.style.transform = `translate(${x}px, ${y}px)`;
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
 
-  requestAnimationFrame(animate);
+  function animate() {
+    x += (mouseX - x) * 0.18;
+    y += (mouseY - y) * 0.18;
+
+    cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  const targets = document.querySelectorAll(
+    "a, button, .project-card, .about-card, .card, .navbar, footer"
+  );
+
+  targets.forEach(el => {
+    el.addEventListener("mouseover", () => {
+      cursor.style.opacity = "0";
+    });
+
+    el.addEventListener("mouseout", () => {
+      cursor.style.opacity = "1";
+    });
+  });
+
 }
-
-animate();
-
-const targets = document.querySelectorAll(
-  "a, button, .project-card, .about-card, .card, .navbar, footer"
-);
-
-targets.forEach(el => {
-  el.addEventListener("mouseover", () => {
-    cursor.style.opacity = "0";
-  });
-
-  el.addEventListener("mouseout", () => {
-    cursor.style.opacity = "1";
-  });
-});
-
 </script>
+
 <footer class="footer">
   <div class="footer-content">
 
@@ -161,4 +166,5 @@ targets.forEach(el => {
 
   </div>
 </footer>
+
 </html>
