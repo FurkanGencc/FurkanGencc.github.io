@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Furkan Portfolio</title>
   <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     html {
       scroll-behavior: smooth;
@@ -16,7 +16,7 @@
 <body>
 
 <div class="cursor-ring">
-<div class="cursor-dot"></div>
+  <div class="cursor-dot"></div>
 </div>
 <div class="cursor-light"></div>
 
@@ -25,19 +25,16 @@
   <div class="left">
     <div class="logo"></div>
   </div>
-   <input type="checkbox" id="menu-toggle">
+
+  <input type="checkbox" id="menu-toggle">
   <label for="menu-toggle" class="hamburger">☰</label>
 
-  
-    <ul class="nav-links">
-      <li><a href="#home">Ana Sayfa</a></li>
-      <li><a href="#about">Hakkımda</a></li>
-      <li><a href="projects.html">Projeler</a></li>
-      <li><a href="#contact">İletişim</a></li>
-    </ul>
-
-
- 
+  <ul class="nav-links">
+    <li><a href="#home">Ana Sayfa</a></li>
+    <li><a href="#about">Hakkımda</a></li>
+    <li><a href="projects.html">Projeler</a></li>
+    <li><a href="#contact">İletişim</a></li>
+  </ul>
 
 </nav>
 
@@ -53,22 +50,19 @@
       Computer Engineering Student • Computer Vision • AI
     </p>
 
-    
-
   </div>
 
 </header>
+
 <section id="about" class="section">
 
   <h2>Hakkımda</h2>
 
   <div class="about-card">
     <p class="about-text">
-     Bilgisayar mühendisliği öğrencisiyim ve özellikle computer vision alanına odaklanıyorum. 
-Görüntü işleme, nesne tespiti ve 2D görüntülerden 3D yapıların çıkarılması üzerine projeler geliştirdim. 
-Gerçek zamanlı sistemler üzerinde çalışarak pratik çözümler üretmeyi hedefliyorum.
-
-Python ve OpenCV ile birlikte, web geliştirme (HTML, CSS) ve Android uygulama geliştirme konularında da aktif olarak projeler üretiyorum.
+      Bilgisayar mühendisliği öğrencisiyim ve özellikle computer vision alanına odaklanıyorum. 
+      Görüntü işleme, nesne tespiti ve 2D görüntülerden 3D yapıların çıkarılması üzerine projeler geliştirdim. 
+      Gerçek zamanlı sistemler üzerinde çalışarak pratik çözümler üretmeyi hedefliyorum.
     </p>
 
     <div class="line"></div>
@@ -87,7 +81,6 @@ Python ve OpenCV ile birlikte, web geliştirme (HTML, CSS) ve Android uygulama g
 
 </section>
 
-<!-- PROJECT PREVIEW -->
 <section class="section">
   <h2>Projeler</h2>
 
@@ -102,7 +95,7 @@ Python ve OpenCV ile birlikte, web geliştirme (HTML, CSS) ve Android uygulama g
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
         <a href="#">Demo</a>
         <a href="projects.html">Tüm Projeler</a>
       </div>
@@ -115,7 +108,6 @@ Python ve OpenCV ile birlikte, web geliştirme (HTML, CSS) ve Android uygulama g
 
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section">
 
   <h2>İletişim</h2>
@@ -125,7 +117,11 @@ Python ve OpenCV ile birlikte, web geliştirme (HTML, CSS) ve Android uygulama g
   <p>💻 <a href="https://github.com/FurkanGencc" target="_blank">GitHub</a></p>
 
 </section>
+
 <script>
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+/* ---------------- WAVE ---------------- */
 const canvas = document.getElementById("wave3D");
 const ctx = canvas.getContext("2d");
 
@@ -139,8 +135,6 @@ resize();
 window.addEventListener("resize", resize);
 
 let time = 0;
-
-
 const cols = 120;
 const rows = 80;
 
@@ -148,12 +142,9 @@ let isVisible = true;
 
 const observer = new IntersectionObserver((entries) => {
   isVisible = entries[0].isIntersecting;
-}, {
-  threshold: 0.01
-});
+}, { threshold: 0.01 });
 
 observer.observe(canvas);
-
 
 const waveScale = 0.25;
 const waveHeight = 28;
@@ -168,7 +159,6 @@ function draw() {
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   time += 0.02;
 
   const centerX = canvas.offsetWidth / 2;
@@ -180,7 +170,6 @@ function draw() {
     for (let x = 0; x < cols; x++) {
 
       const px = (x - cols / 2) * spacing;
-
 
       const wave =
         Math.sin(x * waveScale + time) +
@@ -209,45 +198,48 @@ function draw() {
 }
 
 draw();
-const cursor = document.querySelector(".cursor-ring");
 
-let mouseX = 0;
-let mouseY = 0;
+/* ---------------- CURSOR (SADECE DESKTOP) ---------------- */
+if (!isMobile) {
 
-let x = 0;
-let y = 0;
+  const cursor = document.querySelector(".cursor-ring");
 
-/* mouse takip */
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
+  let mouseX = 0;
+  let mouseY = 0;
 
-function animate() {
-  x += (mouseX - x) * 0.18;
-  y += (mouseY - y) * 0.18;
+  let x = 0;
+  let y = 0;
 
-  cursor.style.transform = `translate(${x}px, ${y}px)`;
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
 
-  requestAnimationFrame(animate);
+  function animate() {
+    x += (mouseX - x) * 0.18;
+    y += (mouseY - y) * 0.18;
+
+    cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  const targets = document.querySelectorAll(
+    "a, button, .project-card, .about-card, .card, .navbar, footer"
+  );
+
+  targets.forEach(el => {
+    el.addEventListener("mouseover", () => {
+      cursor.style.opacity = "0";
+    });
+
+    el.addEventListener("mouseout", () => {
+      cursor.style.opacity = "1";
+    });
+  });
 }
-
-animate();
-
-const targets = document.querySelectorAll(
-  "a, button, .project-card, .about-card, .card, .navbar, footer"
-);
-
-targets.forEach(el => {
-  el.addEventListener("mouseover", () => {
-    cursor.style.opacity = "0";
-  });
-
-  el.addEventListener("mouseout", () => {
-    cursor.style.opacity = "1";
-  });
-});
-
 
 </script>
 
@@ -268,5 +260,6 @@ targets.forEach(el => {
 
   </div>
 </footer>
+
 </body>
 </html>
