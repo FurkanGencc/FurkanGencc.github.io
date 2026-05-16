@@ -140,11 +140,10 @@ window.addEventListener("resize", resize);
 
 let time = 0;
 
-// 🔥 biraz azaltıldı ama görünüm aynı hissi verir
+
 const cols = 120;
 const rows = 80;
 
-// 🎯 scroll sırasında kapatma (EN BÜYÜK OPTİMİZASYON)
 let isVisible = true;
 
 const observer = new IntersectionObserver((entries) => {
@@ -155,7 +154,7 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(canvas);
 
-// 🔥 ön hesaplamalar (micro optimize)
+
 const waveScale = 0.25;
 const waveHeight = 28;
 const spacing = 6;
@@ -182,7 +181,7 @@ function draw() {
 
       const px = (x - cols / 2) * spacing;
 
-      // 🌊 wave (aynı ama daha hafif hesap)
+
       const wave =
         Math.sin(x * waveScale + time) +
         Math.cos(z * waveScale + time);
