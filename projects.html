@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects</title>
   <link rel="stylesheet" href="style.css">
+   <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 
 <body>
-
 <div class="cursor-light"></div>
-
 <nav class="navbar">
   <div class="logo"></div>
 
@@ -28,6 +34,24 @@
 <!-- PROJECTS -->
 <section class="section">
   <h2>Projeler</h2>
+  <!-- CARD 4 -->
+<div class="project-card">
+  <div class="project-info">
+    <h3>AI-Based 3D Reconstruction</h3>
+    <p>Az sayıda görüntüden Depth-Anything-3 ile derinlik tahmini yaparak Open3D kullanımıyla 3D nokta bulutu oluşturma ve görselleştirme.</p>
+
+    <div class="tags">
+      <span>Depth-Anything-3</span>
+      <span>Open3d</span>
+      <span>Python</span>
+    </div>
+
+  </div>
+
+  <div class="project-media">
+    <canvas id="carCanvas"></canvas>
+  </div>
+</div>
 
   <!-- CARD 1 -->
   <div class="project-card">
@@ -41,7 +65,7 @@
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
         <a href="#">Demo</a>
       </div>
     </div>
@@ -63,7 +87,7 @@
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
         <a href="#">Demo</a>
       </div>
     </div>
@@ -85,7 +109,7 @@
       </div>
 
       <div class="buttons">
-        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects" target="_blank">GitHub</a>
+        <a href="https://github.com/FurkanGencc/image_processing_basic/tree/main/computer_vision_projects"target="_blank">GitHub</a>
         <a href="#">Demo</a>
       </div>
     </div>
@@ -100,54 +124,6 @@
 <div class="cursor-ring">
   <div class="cursor-dot"></div>
 </div>
-
-</body>
-
-<script>
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-if (!isMobile) {
-
-  const cursor = document.querySelector(".cursor-ring");
-
-  let mouseX = 0;
-  let mouseY = 0;
-
-  let x = 0;
-  let y = 0;
-
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animate() {
-    x += (mouseX - x) * 0.18;
-    y += (mouseY - y) * 0.18;
-
-    cursor.style.transform = `translate(${x}px, ${y}px)`;
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-
-  const targets = document.querySelectorAll(
-    "a, button, .project-card, .about-card, .card, .navbar, footer"
-  );
-
-  targets.forEach(el => {
-    el.addEventListener("mouseover", () => {
-      cursor.style.opacity = "0";
-    });
-
-    el.addEventListener("mouseout", () => {
-      cursor.style.opacity = "1";
-    });
-  });
-
-}
-</script>
 
 <footer class="footer">
   <div class="footer-content">
@@ -167,4 +143,8 @@ if (!isMobile) {
   </div>
 </footer>
 
+<script src="cursor.js"></script>
+<script type="module" src="car3d.js"></script>
+
+</body>
 </html>
