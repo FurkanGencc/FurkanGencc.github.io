@@ -57,11 +57,20 @@ if (!canvas) {
     controls.addEventListener("start", () => { controls.autoRotate = false; });
     controls.addEventListener("end",   () => { controls.autoRotate = true; });
 
+    // Loading göstergesi
+    const loadingEl = document.createElement("div");
+    loadingEl.style.cssText = "position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#38bdf8;font-size:14px;pointer-events:none;";
+    loadingEl.textContent = "Yükleniyor...";
+    canvas.parentElement.style.position = "relative";
+    canvas.parentElement.appendChild(loadingEl);
+
     const loader = new PLYLoader();
 
     loader.load(
       "models/car.ply",
       (geometry) => {
+        loadingEl.remove();
+
         geometry.computeVertexNormals();
         geometry.center();
 
@@ -88,11 +97,13 @@ if (!canvas) {
       },
       (xhr) => {
         if (xhr.lengthComputable) {
-          console.log(`car.ply yükleniyor: %${(xhr.loaded / xhr.total * 100).toFixed(0)}`);
+          const pct = (xhr.loaded / xhr.total * 100).toFixed(0);
+          loadingEl.textContent = `Yükleniyor... %${pct}`;
         }
       },
       (err) => {
         console.error("PLY yüklenemedi:", err);
+        loadingEl.textContent = "Model yüklenemedi.";
       }
     );
 
